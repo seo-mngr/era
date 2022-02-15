@@ -1,0 +1,7 @@
+.DS_Store
+/#src/fonts/*
+/dist/fonts/*
+/node_modules
+package-lock.json
+era.sublime-project
+era.sublime-workspace
