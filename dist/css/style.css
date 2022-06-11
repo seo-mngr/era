@@ -5228,7 +5228,7 @@ form .validation_error {
     width: 100%;
   }
   .header {
-    height: 120px;
+    height: 80px;
     position: relative;
     margin-bottom: 15px;
   }
@@ -5237,10 +5237,9 @@ form .validation_error {
     justify-content: flex-end;
   }
   .header__contacts {
-    margin-bottom: 10px;
     margin-right: 0;
     flex-direction: row-reverse;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
     height: auto;
   }
@@ -5258,6 +5257,7 @@ form .validation_error {
   }
   .header__nav {
     height: auto;
+    display: none;
   }
   .header__fixed {
     height: 50px;
@@ -5282,7 +5282,7 @@ form .validation_error {
     height: 25px;
   }
   .city-selector__img {
-    right: -36px;
+    left: -30px;
   }
   .mini-cart {
     padding-right: 37px;
@@ -5333,7 +5333,7 @@ form .validation_error {
   .question-city {
     max-width: 250px;
     position: fixed;
-    top: 140px;
+    top: 100px;
     left: 0;
     right: 0;
     margin: 0 auto;
