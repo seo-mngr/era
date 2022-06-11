@@ -4,9 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/style.min.css">
-  <title>Era-mebel.com</title>
+  <title>Era-mebel.com — Каталог</title>
 </head>
 <body>
+  @@include('view_parts/_sidebar.html')
   <div class="wrapper">
   	@@include('view_parts/_header.html')
   	<main class="main">
@@ -14,14 +15,136 @@
   			<div class="container">
   				<div class="breadcrumbs__wrap">
   					<ul class="breadcrumbs__list">
-	  					<li class="breadcrumbs__list-item">
+	  					<li class="breadcrumbs__item">
 	  						<a href="/" class="breadcrumbs__link">Главная</a>
 	  					</li>
-	  					<li class="breadcrumbs__list-item">Частный детектив</li>
+	  					<li class="breadcrumbs__item">
+                <span class="breadcrumbs__current">Каталог</span>
+              </li>
 	  				</ul>
   				</div>
   			</div>
-  		</div>
+      </div>
+
+      <div class="main__content container">
+        <h1 class="headline">Каталог</h1>
+        <div class="catalog">
+          <div class="catalog__item">
+            <a href="" class="catalog__item-link">
+              <span class="catalog__item-bg">
+                <img src="/img/catalog-item1.png" alt="" class="catalog__item-bg-img">
+              </span>
+              <span class="catalog__item-content">
+                <span class="catalog__item-icon">
+                  <img src="/img/catalog-item-icon.png" alt="" class="catalog__item-icon-img">
+                </span>
+                <span class="catalog__item-text">Мебель для спальни</span>
+              </span>
+            </a>
+          </div>
+          <div class="catalog__item">
+            <a href="" class="catalog__item-link">
+              <span class="catalog__item-bg">
+                <img src="/img/catalog-item1.png" alt="" class="catalog__item-bg-img">
+              </span>
+              <span class="catalog__item-content">
+                <span class="catalog__item-icon">
+                  <img src="/img/catalog-item-icon.png" alt="" class="catalog__item-icon-img">
+                </span>
+                <span class="catalog__item-text">Мебель для спальни</span>
+              </span>
+            </a>
+          </div>
+          <div class="catalog__item">
+            <a href="" class="catalog__item-link">
+              <span class="catalog__item-bg">
+                <img src="/img/catalog-item1.png" alt="" class="catalog__item-bg-img">
+              </span>
+              <span class="catalog__item-content">
+                <span class="catalog__item-icon">
+                  <img src="/img/catalog-item-icon.png" alt="" class="catalog__item-icon-img">
+                </span>
+                <span class="catalog__item-text">Мебель для спальни</span>
+              </span>
+            </a>
+          </div>
+          <div class="catalog__item">
+            <a href="" class="catalog__item-link">
+              <span class="catalog__item-bg">
+                <img src="/img/catalog-item1.png" alt="" class="catalog__item-bg-img">
+              </span>
+              <span class="catalog__item-content">
+                <span class="catalog__item-icon">
+                  <img src="/img/catalog-item-icon.png" alt="" class="catalog__item-icon-img">
+                </span>
+                <span class="catalog__item-text">Мебель для спальни</span>
+              </span>
+            </a>
+          </div>
+          <div class="catalog__item">
+            <a href="" class="catalog__item-link">
+              <span class="catalog__item-bg">
+                <img src="/img/catalog-item1.png" alt="" class="catalog__item-bg-img">
+              </span>
+              <span class="catalog__item-content">
+                <span class="catalog__item-icon">
+                  <img src="/img/catalog-item-icon.png" alt="" class="catalog__item-icon-img">
+                </span>
+                <span class="catalog__item-text">Мебель для спальни</span>
+              </span>
+            </a>
+          </div>
+          <div class="catalog__item">
+            <a href="" class="catalog__item-link">
+              <span class="catalog__item-bg">
+                <img src="/img/catalog-item1.png" alt="" class="catalog__item-bg-img">
+              </span>
+              <span class="catalog__item-content">
+                <span class="catalog__item-icon">
+                  <img src="/img/catalog-item-icon.png" alt="" class="catalog__item-icon-img">
+                </span>
+                <span class="catalog__item-text">Мебель для спальни</span>
+              </span>
+            </a>
+          </div>
+          <div class="catalog__item">
+            <a href="" class="catalog__item-link">
+              <span class="catalog__item-bg">
+                <img src="/img/catalog-item1.png" alt="" class="catalog__item-bg-img">
+              </span>
+              <span class="catalog__item-content">
+                <span class="catalog__item-icon">
+                  <img src="/img/catalog-item-icon.png" alt="" class="catalog__item-icon-img">
+                </span>
+                <span class="catalog__item-text">Мебель для спальни</span>
+              </span>
+            </a>
+          </div>
+          <div class="catalog__item">
+            <a href="" class="catalog__item-link">
+              <span class="catalog__item-bg">
+                <img src="/img/catalog-item1.png" alt="" class="catalog__item-bg-img">
+              </span>
+              <span class="catalog__item-content">
+                <span class="catalog__item-icon">
+                  <img src="/img/catalog-item-icon.png" alt="" class="catalog__item-icon-img">
+                </span>
+                <span class="catalog__item-text">Мебель для спальни</span>
+              </span>
+            </a>
+          </div>
+        </div>
+
+        <div class="content">
+          <ul class="seo-list-ul">
+            <li>✅ Мебель в г. Москва от 1533 руб. - каталог, цены</li>
+            <li>✅ 556 моделей классической мебели со скидкой до 35%</li>
+            <li>✅ Оперативная доставка по г. Москва и всей России</li>
+            <li>✅ Сборка, подъём на этаж, занос в квартиру</li>
+            <li>✅ Мебель в классическом стиле от российского производителя по лекалам итальянских мастеров</li>
+          </ul>
+        </div>
+      </div>
 		</main>
   	@@include('view_parts/_footer.html')
   </div>

@@ -7,54 +7,115 @@
 @import "parts/globals"
 
 @import "modules/simplebar/simplebar.scss"
+//@import "modules/tiny-slider/tiny-slider.scss"
+@import "modules/swiper/swiper-bundle.scss"
+@import "modules/progressively/progressively.min.scss"
+@import "modules/fancybox/jquery.fancybox.scss"
+@import "modules/selectize/selectize.scss"
 
-// общий контейнер страницы
-.wrapper
-	min-height: 100vh
-	overflow: hidden
-
-.header
-
-
-// основной контент страницы
-.main
-	flex: 1 0 auto
-
-	@media screen and (max-width: $media-lg)
-
-	@media screen and (max-width: $media-sm)
-
-	@media screen and (max-width: $media-xs)
-
-.footer
-
-
-.nav
-	
-$sidebar--width: 92px
-$sidebar__item--height: 55px
-$sidebar--ptop: 22px
 .sidebar
-	width: $sidebar--width
+	width: $sidebar_active--width
 	padding-top: $sidebar--ptop
 	position: fixed
 	left: 0
 	top: 0
 	height: 100vh
+	background: #fff
+	box-shadow: 0px 0px 25px 0px rgb(4 5 5 / 20%)
+	z-index: 100
+	transition: width $animation-fast ease
+	overflow: hidden
+	$block: &
+
+	@media screen and (max-width: $media-xxl)
+		width: $sidebar--width
+
+	@media screen and (max-width: $media-md)
+		width: 0px
+
+	&:hover
+		width: $sidebar_active--width
+
+		@media screen and (max-width: $media-md)
+			width: $sidebar_active--width-md
+
+		& .logo
+			& .logo__img
+				display: block
+
+			& .logo__img-sm
+				display: none
 
 	&_active
-		width: 270px
+		width: $sidebar_active--width
 
-$logo--height: 62px
-$logo--mbottom: 15px
+		@media screen and (max-width: $media-md)
+			width: $sidebar_active--width-md
+
+	&#{$block}
+		&_with
+			&_submenu
+				width: calc($sidebar_active--width * 2)
+
+				& #{$block}
+					&__submenu-wrapper
+						display: block
+
+	&_hover
+		&_fix
+			width: 0 !important
+
+	&__wrapper
+		position: relative
+		width: 100%
+		max-width: $sidebar_active--width
+		background: #fff
+		z-index: 2
+
+		@media screen and (max-width: $media-md)
+			max-width: $sidebar_active--width-md
+
+	&__logo
+		margin-bottom: $logo--mbottom
+
+	& .logo
+		&__img-wrap
+			&::before
+				@media screen and (max-width: $media-md)
+					display: block
+					opacity: 1
+
+	&__submenu-wrapper
+		display: none
+		position: absolute
+		top: 0
+		right: 0
+		width: $sidebar_active--width
+		height: 100vh
+		background: #245b5a
+		z-index: 1
+
+		& .side-menu__submenu
+			display: block
+
 .logo
 	height: $logo--height
-	margin-bottom: $logo--mbottom
+
+	&_sidebar
+
+	&_header
+
+	&_footer
+
+	&_footer &__img
+		@media screen and (max-width: $media-xxl)
+			display: block
 
 	&__img-wrap
 		position: relative
 		display: flex
 		justify-content: center
+		align-items: center
 		width: 100%
 		height: 100%
 
@@ -70,15 +131,37 @@ $logo--mbottom: 15px
 			margin: 0 auto
 			background: url(../img/logo_fon.png) top / 182px no-repeat
 			opacity: 0
-			transition: opacity 0.95s ease
+			transition: opacity $animation-slow ease
+
+			@media screen and (max-width: $media-md)
+				display: none
 
 		&:hover::before
 			opacity: 1
 
+
+
 	&__img
+		flex: none
 		max-height: 100%
 
-$searchbar--height: $sidebar__item--height
+		@media screen and (max-width: $media-xxl)
+			display: none
+
+		@media screen and (max-width: $media-md)
+			display: block
+
+	&__img-sm
+		flex: none
+		max-height: 70%
+		display: none
+
+		@media screen and (max-width: $media-xxl)
+			display: block
+
+		@media screen and (max-width: $media-md)
+			display: none
+
 .searchbar
 	height: $searchbar--height
 
@@ -121,49 +204,74 @@ $searchbar--height: $sidebar__item--height
 			color: #ccc
 
 .side-menu
-	height: calc(100% - ($logo--height + $logo--mbottom + $searchbar--height))
-
-	& .simplebar-track.simplebar-vertical
-		left: 0
-		width: 7px
+	height: calc((var(--vh, 1vh) * 100) - ($sidebar--ptop + $logo--height + $logo--mbottom + $searchbar--height))
+	$block: &
 
 	&__list
 
 		&_color
 			&_orange
 
+		&_mobile
+			display: none
+
+			@media screen and (max-width: $media-md)
+				display: block
+
 	&__item
-		height: $sidebar__item--height
+		position: relative
+
+		&_hover
+			& #{$block}
+				&__item-link
+					background: #245b5a
+					color: #fff
+
+					& svg
+						fill: #fff
 
 	&__item-link
-		height: 100%
+		position: relative
+		height: $sidebar__item--height
 		width: 100%
 		display: flex
 		align-items: center
 		color: #313130
-		transition: background .1s ease
+		transition: background $animation-very-fast ease
 
-		&:hover
+		&:hover,
+		&_active
 			background: #245b5a
 			color: #fff
 
 			& svg
 				fill: #fff
 
-	&__list_color_orange &__item-link
-		color: #c64a28
+	&__item-arrow
+		position: absolute
+		right: 20px
+		display: block
+		width: 15px
+		height: 15px
 
-		&:hover
-			background: #c64a28
-			color: #fff
+	&__list
+		&_color
+			&_orange
+				& #{$block}
+					&__item-link
+						color: #c64a28
 
-		& svg
-			fill: #c64a28
+						&:hover
+							background: #c64a28
+							color: #fff
 
-		&:hover
+						& svg
+							fill: #c64a28
 
-			& svg
-				fill: #fff
+						&:hover
+
+							& svg
+								fill: #fff
 
 	&__item-icon
 		flex: none
@@ -176,11 +284,2064 @@ $searchbar--height: $sidebar__item--height
 		display: block
 		width: 42px
 		height: 40px
+		display: flex
+		justify-content: center
+		align-items: center
 
 		& svg
 			max-width: 100%
 			max-height: 100%
+			width: 100%
 
 	&__item-text
-		
 
+	&__submenu
+		display: none
+		position: absolute
+		top: 0
+		left: 0
+		right: 0
+
+		@media screen and (max-width: $media-md)
+			position: static
+			background: #245b5a
+
+		#{$block}
+			&__item
+				&:hover
+					& #{$block}
+						&__item-link
+							background: #fff
+
+					& #{$block}
+						&__item-text
+							color: #000
+
+					& svg
+						fill: #000
+
+		#{$block}
+			&__item-text
+				color: #fff
+
+		& svg
+			fill: #fff
+
+	& .simplebar-wrapper
+		//height: 100%
+
+	& .simplebar-track.simplebar-vertical
+		left: 0
+		width: 7px
+
+// общий контейнер страницы
+.wrapper
+	display: flex
+	flex-direction: column
+	justify-content: space-between
+	padding-top: $header--height
+	position: relative
+	min-height: 100vh
+	margin-left: $sidebar_active--width
+	width: calc(100% - $sidebar_active--width)
+	overflow: hidden
+
+	@media screen and (max-width: $media-xxl)
+		margin-left: $sidebar--width
+		width: calc(100% - $sidebar--width)
+
+	@media screen and (max-width: $media-md)
+		padding-top: 0
+		margin-left: 0
+		width: 100%
+
+	&_home
+		padding-top: 0
+
+.header
+	height: $header--height
+	width: 100%
+	position: absolute
+	top: 0
+	left: 0
+	z-index: 10
+
+	@media screen and (max-width: $media-md)
+		height: $header--height-md
+		position: relative
+		margin-bottom: 15px
+
+	&__wrap
+		height: 100%
+		display: flex
+
+		@media screen and (max-width: $media-md)
+			flex-direction: column
+			justify-content: flex-end
+
+	&__contacts
+		margin-right: 55px
+		height: 100%
+		display: flex
+		flex-direction: column
+		justify-content: center
+
+		@media screen and (max-width: $media-xl)
+			margin-right: 30px
+
+		@media screen and (max-width: $media-md)
+			margin-bottom: 10px
+			margin-right: 0
+			flex-direction: row-reverse
+			justify-content: flex-end
+			align-items: center
+			height: auto
+
+	&__city-selector
+		margin-bottom: 5px
+
+		@media screen and (max-width: $media-md)
+			margin-bottom: 0
+
+	&__phone
+		@media screen and (max-width: $media-md)
+			margin-right: 25px
+
+	&__phone-link
+		font-size: 20px
+		color: #313130
+		white-space: nowrap
+
+		@media screen and (max-width: $media-md)
+			font-size: 16px
+
+		&:hover
+			color: #245b5a
+
+	&__working-hours
+		font-size: 14px
+
+		@media screen and (max-width: $media-md)
+			display: none
+
+	&__nav
+		height: 100%
+
+		@media screen and (max-width: $media-md)
+			height: auto
+
+	&__fixed
+		height: $header--height
+		position: fixed
+		top: 0
+		right: 0
+		display: flex
+
+		@media screen and (max-width: $media-md)
+			height: $header__fixed--height-md
+			left: 0
+			background: #fff
+			display: flex
+			justify-content: center
+
+	&__logo
+		display: none
+		max-height: 100%
+
+		@media screen and (max-width: $media-md)
+			display: block
+
+		& .logo__img-sm
+			@media screen and (max-width: $media-md)
+				display: block
+
+	&__mini-cart
+		position: absolute
+		top: 0
+		right: 0
+		height: $header--height
+
+		@media screen and (max-width: $media-md)
+			height: $header__fixed--height-md
+
+.side-menu-btn
+	display: none
+	position: absolute
+	padding: 0
+	margin: 0
+	top: 18px
+	left: 6px
+	width: 35px
+	height: 29px
+	font-size: 0
+	text-indent: -9999px
+	appearance: none
+	box-shadow: none
+	border-radius: 0px
+	cursor: pointer
+	transition: background 0.3s
+	z-index: 101
+	box-sizing: border-box
+	border: none
+	float: left
+
+	@media screen and (max-width: $media-md)
+		display: block
+
+	&_active
+
+	&_close
+
+	& span
+		display: block
+		position: absolute
+		top: 13px
+		left: 5px
+		height: 3px
+		width: 25px
+		background-color: #000
+		border-radius: 0px
+
+		&::before, &::after
+			position: absolute
+			display: block
+			left: 0
+			width: 25px
+			height: 3px
+			background-color: #000
+			border-radius: 0px
+			content: ""
+			transition-duration: 0.1s, 0.1s
+			transition-delay: 0.1s, 0s
+
+		&::before
+			top: -8px
+			transition-property: top, transform
+
+		&::after
+			bottom: -8px
+			transition-property: bottom, transform
+
+	&_active
+		& span
+			background: none
+
+			&::before, &::after
+				transition-delay: 0s, 0.1s
+
+			&::before
+				top: 0
+				transform: rotate(45deg)
+
+			&::after
+				bottom: 0
+				transform: rotate(-45deg)
+
+.city-selector
+	height: 36px
+	width: fit-content
+	position: relative
+
+	@media screen and (max-width: $media-md)
+		height: 25px
+
+	&__link
+		height: 100%
+		display: flex
+		align-items: center
+		position: relative
+
+		&::after
+			content: ''
+			margin-left: 15px
+			border-left: 3.5px solid transparent
+			border-right: 3.5px solid transparent
+			border-top: 3px solid #7d7c7b
+
+	&__text
+		color: #696969
+
+	&__img
+		height: 100%
+		position: absolute
+		right: -45px
+
+		@media screen and (max-width: $media-md)
+			right: -36px
+
+.nav
+	height: 100%
+	font-size: 14px
+
+	&__list
+		height: 100%
+		display: flex
+		align-items: center
+
+	&__item
+		height: 100%
+
+		&:not(:last-child)
+			margin-right: 45px
+
+			@media screen and (max-width: $media-xl)
+				margin-right: 20px
+
+	&__item-link
+		height: 100%
+		display: flex
+		align-items: center
+		color: #313130
+
+		&:hover
+			text-decoration: underline
+
+// основной контент страницы
+.main
+	flex: 1 0 auto
+
+	@media screen and (max-width: $media-lg)
+
+	@media screen and (max-width: $media-sm)
+
+	@media screen and (max-width: $media-xs)
+
+	&__content
+
+.breadcrumbs
+	margin-top: 15px
+
+	&__wrap
+
+	&__list
+		display: flex
+		flex-wrap: wrap
+
+	&__item
+
+	&__link
+		position: relative
+		margin-right: 18px
+		color: #313130
+
+		&:hover
+			color: #245b5a
+
+		&::after
+			content: '/'
+			position: absolute
+			left: calc(100% + 6px)
+
+	&__current
+		color: #245b5a
+
+.slider-frontpage
+	position: relative
+
+	&__slider-preloader
+
+	&__slider
+		display: none
+
+		&.swiper-initialized
+			display: block
+
+	&__slider-wrapper
+
+	&__item
+		display: block
+
+	&__item-picture
+
+	&__item-img
+		width: 100%
+		height: auto
+
+	& .swiper-button-prev, & .swiper-button-next
+		width: 27px
+		height: 53px
+		position: absolute
+		top: 50%
+		transform: translate(0, -50%)
+		background: url(../img/slider-frontpage-controls.png) 0px 0px no-repeat
+		z-index: 1
+		outline: none
+
+		&:hover
+			background: url(../img/slider-frontpage-controls.png) 0px -100px no-repeat
+
+		&:link:active
+			outline: none
+
+		&:visited:active
+			outline: none
+
+	& .swiper-button-prev
+		left: 35px
+
+	& .swiper-button-next
+		right: 35px
+		transform: scale(-1, 1) translateY(-50%)
+
+	& .swiper-pagination
+		& .swiper-pagination-bullet
+			background: #fff
+			border: 1px solid #888
+			opacity: 1
+
+		& .swiper-pagination-bullet-active
+			background: #888
+
+.slider-products
+
+	&_sales
+
+	&_hits
+
+	&_models
+
+	&_series
+
+	&_popular
+
+	&_youtube
+
+	&__headlink
+		color: #245b5a
+
+	&__headicon
+		position: relative
+		top: 5px
+
+	&__slider-wrap
+		position: relative
+
+	&__slider
+		margin-bottom: 15px
+		display: flex
+		overflow: visible
+
+		& .swiper-wrapper
+			margin-bottom: 32px
+
+		& .swiper-pagination
+			z-index: -1
+
+	&__slide
+		max-width: 250px
+
+		@media screen and (max-width: $media-xs)
+			max-width: 150px
+
+		&.swiper-slide
+			// swiper box-shadow bug
+			transform: none
+
+	&_youtube &__slide
+		max-width: 350px
+
+		& a
+			display: block
+			width: 350px
+
+	&__controls
+		z-index: 1
+
+	&__btn-prev, &__btn-next
+		position: absolute
+		top: -20px
+		min-height: 90%
+		width: 60px
+		cursor: pointer
+		outline: none
+
+		&:link:active
+			outline: none
+
+		&:visited:active
+			outline: none
+
+	&_youtube &__btn-prev, &_youtube &__btn-next
+		height: 100%
+
+	&__btn-prev
+		left: -35px
+		box-shadow: inset 40px 0 20px rgba(255,255,255,1)
+
+	&__btn-next
+		right: -35px
+		box-shadow: inset -40px 0 20px rgba(255,255,255,1)
+	
+
+	& .tns-ovh
+		overflow: visible
+
+	& .tns-nav
+		display: flex
+		justify-content: center
+		align-items: center
+
+		& button
+			flex: none
+			padding: 0
+			margin: 0 5px
+			width: 10px
+			height: 10px
+			background: #fff
+			border-radius: 50%
+			border: 1px solid #7d7c7b
+			cursor: pointer
+
+			&:hover
+				background: #7d7c7b
+
+.mini-cart
+	display: flex
+	align-items: center
+	padding-right: 57px
+
+	@media screen and (max-width: $media-md)
+		padding-right: 37px
+		font-size: 12px
+
+	&__item
+		&:not(:last-child)
+			margin-right: 30px
+
+			@media screen and (max-width: $media-md)
+				margin-right: 11px
+
+	&__link
+		display: block
+
+	&__viewed
+		display: flex
+		justify-content: center
+		align-items: center
+		width: 26px
+		height: 23px
+		background-image: url(../img/h_view.png)
+		background-size: cover
+		background-repeat: no-repeat
+		color: #000
+
+		@media screen and (max-width: $media-md)
+			width: 20px
+			height: 17px
+
+		&:hover
+			color: #fff
+			background-position: 0 -100px
+
+			@media screen and (max-width: $media-md)
+				background-position: 0 -77px
+
+	&__favorites
+		display: flex
+		justify-content: center
+		align-items: center
+		width: 26px
+		height: 23px
+		background-image: url(../img/h_like.png)
+		background-size: cover
+		background-repeat: no-repeat
+		color: #000
+
+		@media screen and (max-width: $media-md)
+			width: 20px
+			height: 17px
+
+		&:hover
+			color: #fff
+			background-position: 0 -100px
+
+			@media screen and (max-width: $media-md)
+				background-position: 0 -77px
+
+	&__cart
+		position: relative
+		width: 27px
+		height: 27px
+		background-image: url(../img/h_korzina.png)
+		background-size: cover
+		background-repeat: no-repeat
+
+		@media screen and (max-width: $media-md)
+			width: 20px
+			height: 20px
+
+		&:hover
+			background-position: 0 -100px
+
+			@media screen and (max-width: $media-md)
+				background-position: 0 -74px
+
+	&__cart-counter
+		display: flex
+		justify-content: center
+		align-items: center
+		width: 29px
+		height: 29px
+		position: absolute
+		top: -11px
+		right: -23px
+		background: #245b5a
+		border-radius: 50%
+		z-index: -1
+		color: #fff
+
+		@media screen and (max-width: $media-md)
+			top: -9px
+			right: -19px
+			width: 23px
+			height: 23px
+
+.promo
+
+	&__list
+		display: flex
+
+	&__item
+		width: calc(100% / 3)
+		margin-right: -1px
+		border: 1px solid #dcdcdc
+		border-top: none
+
+	&__item-link
+		display: block
+		width: 100%
+		height: 100%
+		position: relative
+
+		&::after
+			content: ''
+			position: absolute
+			top: 0
+			left: 0
+			width: 100%
+			height: 100%
+			transition: box-shadow $animation-fast ease
+
+		&:hover
+			&::after
+				box-shadow: inset 0px 0px 20px 0px rgb(4 5 5 / 40%)
+
+	&__img
+		width: 100%
+		height: auto
+		max-height: 100%
+
+.product-mini
+	display: block
+	position: relative
+	width: 250px
+	min-width: 150px
+	z-index: 1
+	transition: z-index $animation-fast ease-in-out
+	background: #fff
+
+	@media screen and (max-width: $media-lg)
+		width: 100%
+
+	&:hover
+		z-index: 10
+
+	&_mark
+		&_new
+
+		&_sale
+
+		&_hit
+
+	&__box
+		position: absolute
+		bottom: 0
+		left: 0
+		right: 0
+		min-height: 100%
+		background: #fff
+		opacity: 0
+		visibility: hidden
+		z-index: 2
+		box-shadow: 0 3px 16px rgb(0 0 0 / 50%)
+		transition: all $animation-fast ease-in-out
+
+		&::before
+			content: ''
+			display: block
+			position: absolute
+			bottom: -20px
+			background: #fff
+			left: 0
+			right: 0
+			height: 20px
+
+	&:hover &__box
+		opacity: 1
+		visibility: visible
+
+	&__wrap
+		padding: 20px 15px 25px
+		position: relative
+		z-index: 2
+
+		@media screen and (max-width: $media-md)
+			padding: 15px 10px 20px
+
+	&__photo
+		margin-bottom: 15px
+		position: relative
+		height: 165px
+		display: flex
+		align-items: flex-start
+		overflow: hidden
+
+		@media screen and (max-width: $media-lg)
+			width: 100%
+			height: 0
+			padding-bottom: 72.72%
+
+	&__img
+		width: 100%
+
+		@media screen and (max-width: $media-lg)
+			position: absolute
+			top: 0
+			left: 0
+			right: 0
+
+	&__labels
+		display: flex
+		position: absolute
+		right: 0
+		bottom: 0
+
+		@media screen and (max-width: $media-lg)
+			bottom: -7px
+
+	&__label
+		display: none
+		margin-right: 3px
+		width: 46px
+		height: 46px
+		font-size: 0
+		opacity: 0.75
+		background-size: contain
+		background-position: center
+		background-repeat: no-repeat
+
+		@media screen and (max-width: $media-lg)
+			width: 35px
+			height: 35px
+
+		&_new
+			background-image: url('../img/label-new.png')
+
+		&_hit
+			background-image: url('../img/label-hit.png')
+
+		&_sale
+			background-image: url('../img/label-sale.png')
+
+	&_mark_new &__label_new
+		display: block
+
+	&_mark_hit &__label_hit
+		display: block
+
+	&_mark_sale &__label_sale
+		display: block
+		
+	&__description
+
+	&__link
+
+		&:hover
+			text-decoration: underline
+			color: #245b5a
+
+	&__type
+		display: block
+		font-size: 14px
+		line-height: 18px
+		color: #9f9f9f
+
+	&__name
+		display: block
+		font-size: 15px
+		font-weight: 700
+		line-height: 22px
+		color: #313130
+		overflow: hidden
+		white-space: nowrap
+		text-overflow: ellipsis
+
+	&__link:hover &__name
+		color: #245b5a
+
+	&__material
+		margin-bottom: 15px
+		display: block
+		font-size: 14px
+		line-height: 22px
+		color: #9f9f9f
+		overflow: hidden
+		white-space: nowrap
+		text-overflow: ellipsis
+
+		@media screen and (max-width: $media-sm)
+			margin-bottom: 5px
+
+	&__price-title
+		font-size: 14px
+		margin-bottom: 10px
+
+		@media screen and (max-width: $media-sm)
+			margin-bottom: 5px
+
+	&__price-wrap
+		position: relative
+		display: flex
+		align-items: center
+		margin-bottom: 10px
+
+		@media screen and (max-width: $media-lg)
+			flex-direction: column
+			align-items: flex-start
+
+		@media screen and (max-width: $media-sm)
+			margin-bottom: 0
+
+	&__more
+		padding: 0 15px 25px
+		position: absolute
+		top: 100%
+		left: 0
+		right: 0
+		background: #fff
+		box-shadow: 0 0 16px 1px rgb(0 0 0 / 50%)
+		opacity: 0
+		visibility: hidden
+		z-index: -1
+		transition: all $animation-fast ease-in-out
+
+		@media screen and (max-width: $media-lg)
+			padding: 0 10px 15px
+
+		&::before
+			content: ''
+			display: block
+			background: #fff
+			position: absolute
+			left: 0
+			right: 0
+			top: -20px
+			height: 20px
+
+	&:hover &__more
+		opacity: 1
+		visibility: visible
+		z-index: 2
+
+	&__buttons
+
+	&__btn
+		display: flex
+		justify-content: center
+		align-items: center
+		width: 100%
+		cursor: pointer
+		height: 27px
+		font-size: 16px
+		background: #245b5a
+		color: #fff
+
+		@media screen and (max-width: $media-sm)
+			font-size: 13px
+
+		&:hover
+			opacity: 0.8
+
+		&:not(:last-child)
+			margin-bottom: 5px
+
+.product
+	display: flex
+	$block: &
+
+	@media screen and (max-width: $media-lg)
+		flex-direction: column
+
+	&_mark
+		&_new
+
+		&_sale
+
+		&_hit
+
+	&__gallery
+		flex: none
+		width: 490px
+		margin-right: 65px
+		position: relative
+
+		@media screen and (max-width: $media-lg)
+			width: 100%
+			margin-bottom: 40px
+
+	&__labels
+		display: flex
+		position: absolute
+		left: 0
+		top: 0
+		z-index: 1
+
+		@media screen and (max-width: $media-lg)
+			bottom: -7px
+
+	&__label
+		display: none
+		margin-right: 3px
+		width: 46px
+		height: 46px
+		font-size: 0
+		opacity: 0.75
+		background-size: contain
+		background-position: center
+		background-repeat: no-repeat
+
+		@media screen and (max-width: $media-lg)
+			width: 35px
+			height: 35px
+
+		&_new
+			background-image: url('../img/label-new.png')
+
+		&_hit
+			background-image: url('../img/label-hit.png')
+
+		&_sale
+			background-image: url('../img/label-sale.png')
+
+	&_mark_new &__label_new
+		display: block
+
+	&_mark_hit &__label_hit
+		display: block
+
+	&_mark_sale &__label_sale
+		display: block
+
+	&__video-btn
+		display: flex
+		justify-content: center
+		align-items: center
+		color: #000
+		text-decoration: underline
+
+		&::before
+			content: ''
+			display: block
+			margin-right: 10px
+			width: 24px
+			height: 24px
+			border: 1px solid #535353
+			border-radius: 50%
+			background: url('../img/tovar_page_video_btn.png') center no-repeat
+			transition: all .2s ease-in-out
+
+		&:hover
+			text-decoration: none
+
+			&::before
+				background-color: #245b5a
+
+	&__content
+		position: relative
+		flex-basis: 100%
+		display: flex
+		flex-direction: column
+
+	&__price-wrap
+		position: relative
+		display: flex
+		align-items: flex-end
+		margin-bottom: 17px
+		padding-top: 17px
+
+		@media screen and (max-width: $media-lg)
+			align-self: center
+			flex-direction: column
+			align-items: flex-start
+			width: fit-content
+			padding-right: 60px
+			padding-top: 0
+
+		@media screen and (max-width: $media-sm)
+			
+
+	&__price-old
+		font-size: 18px
+		line-height: 1em
+		color: #9f9f9f
+		margin-right: 10px
+		text-decoration: line-through
+
+	&__price-old-cur
+
+		&::after
+			content: '\20BD'
+
+	&__price
+		font-size: 32px
+		line-height: 1em
+		color: #313130
+
+		&::after
+			content: '\20BD'
+
+	&__price-cur
+
+	&__price-badge
+		align-self: flex-start
+		margin-left: 10px
+		position: relative
+		display: flex
+		justify-content: center
+		align-items: center
+		width: 40px
+		height: 22px
+
+		@media screen and (max-width: $media-lg)
+			position: absolute
+			right: 0
+			bottom: 0
+
+		& svg
+			flex: none
+			position: absolute
+			top: 0
+			left: 0
+			right: 0
+			width: 100%
+			height: 100%
+
+		& span
+			position: relative
+			left: 3px
+			display: block
+			color: #fff
+			font-size: 12px
+			line-height: 1em
+
+	// BEGIN Price at .product-mini card
+
+	.product-mini &__price-old
+		font-size: 15px
+		line-height: 1em
+		color: #9f9f9f
+		margin-right: 10px
+		text-decoration: line-through
+		white-space: nowrap
+
+	.product-mini &__price-old-cur
+
+		&::after
+			content: '\20BD'
+
+	.product-mini &__price
+		font-size: 20px
+		line-height: 1em
+		color: #313130
+		white-space: nowrap
+
+		@media screen and (max-width: $media-lg)
+			font-size: 18px
+
+		&::after
+			content: '\20BD'
+
+	.product-mini &__price-cur
+
+	.product-mini &__price-badge
+		margin-left: 10px
+		position: relative
+		display: flex
+		justify-content: center
+		align-items: center
+		width: 40px
+		height: 22px
+
+		@media screen and (max-width: $media-lg)
+			position: absolute
+			right: 0
+			bottom: 0
+
+		& svg
+			flex: none
+			position: absolute
+			top: 0
+			left: 0
+			right: 0
+			width: 100%
+			height: 100%
+
+		& span
+			position: relative
+			left: 3px
+			display: block
+			color: #fff
+			font-size: 12px
+			line-height: 1em
+
+	// END Price at .product-mini card
+
+	&__form
+		width: 185px
+		position: absolute
+		right: 0
+		top: 0
+
+		@media screen and (max-width: $media-xl)
+			position: relative
+			margin-bottom: 40px
+
+		@media screen and (max-width: $media-lg)
+			align-self: center
+			width: 100%
+
+	&__btn
+		padding: 0
+		height: 34px
+		display: flex
+		justify-content: center
+		align-items: center
+		min-width: 100%
+		background: #245b5a
+		font-size: 14px
+		text-transform: uppercase
+		color: #fff
+		cursor: pointer
+
+		&:hover
+			opacity: .8
+
+		&:not(:last-child)
+			margin-bottom: 5px
+
+	&__feature
+		margin-right: 185px
+		padding-bottom: 20px
+		margin-bottom: 20px
+		border-bottom: 1px solid #aeaeae
+
+		@media screen and (max-width: $media-xl)
+			margin-right: 0
+
+	&__text
+		padding-bottom: 20px
+		border-bottom: 1px solid #aeaeae
+
+.product-slider
+	width: 100%
+	margin-bottom: 36px
+
+	&__carousel
+		display: flex
+		width: 100%
+		margin-bottom: 10px
+
+	&__item
+		flex: none
+		display: block
+		width: 100%
+
+	&__item-img
+		@media screen and (max-width: $media-lg)
+			width: 100%
+
+	&__thumb-wrap
+		position: relative
+		padding-left: 25px
+		padding-right: 25px
+
+	&__thumb-carousel
+
+	&__thumb-item
+
+	&__thumb-item-img
+
+	&__thumb-controls
+
+	&__thumb-btn-prev, &__thumb-btn-next
+		width: 13px
+		height: 53px
+		position: absolute
+		top: 50%
+		transform: translate(0, -50%)
+		background: url(../img/slider-frontpage-controls.png) 0px 0px no-repeat
+		z-index: 1
+		cursor: pointer
+
+		&:hover
+			background: url(../img/slider-frontpage-controls.png) 0px -100px no-repeat
+
+	&__thumb-btn-prev
+		left: 0
+
+	&__thumb-btn-next
+		right: 0
+		transform: scale(-1, 1) translateY(-50%)
+
+.parallax-block
+	position: relative
+	//z-index: -1
+
+	&__wrap
+		display: block
+		height: 150px
+		overflow: hidden
+
+		@media screen and (max-width: $media-md)
+			height: 70px
+
+	&__img
+		position: relative
+		width: 100%
+		height: auto
+
+.category
+	margin-bottom: 70px
+	display: flex
+	flex-wrap: wrap
+
+	@media screen and (max-width: $media-lg)
+		display: flex
+		flex-wrap: wrap
+		justify-content: space-around
+
+	&__item
+		display: inline-block
+
+		@media screen and (max-width: $media-lg)
+			width: 25%
+
+		@media screen and (max-width: $media-md)
+			width: 33.3333%
+
+		@media screen and (max-width: $media-sm)
+			width: 50%
+
+.catalog
+	margin-bottom: 70px
+	display: flex
+	flex-wrap: wrap
+	align-items: flex-start
+
+	&__item
+		position: relative
+		width: calc(20% - 8px)
+		margin-right: 10px
+		margin-bottom: 10px
+
+		&:nth-child(5n)
+			margin-right: 0
+
+		&:nth-last-child(-n + 5)
+			margin-bottom: 0
+
+		@media screen and (max-width: $media-xl)
+			width: calc(25% - 7.5px)
+
+			&:nth-child(n)
+				margin-right: 10px
+				margin-bottom: 10px
+
+			&:nth-child(4n)
+				margin-right: 0
+
+			&:nth-last-child(-n + 4)
+				margin-bottom: 0
+
+		@media screen and (max-width: $media-lg)
+			width: calc(33.3333% - 6.6666px)
+
+			&:nth-child(n)
+				margin-right: 10px
+				margin-bottom: 10px
+
+			&:nth-child(3n)
+				margin-right: 0
+
+			&:nth-last-child(-n + 3)
+				margin-bottom: 0
+
+		@media screen and (max-width: $media-sm)
+			width: calc(50% - 5px)
+
+			&:nth-child(n)
+				margin-right: 10px
+				margin-bottom: 10px
+
+			&:nth-child(2n)
+				margin-right: 0
+
+			&:nth-last-child(-n + 2)
+				margin-bottom: 0
+
+	&__item-link
+		display: flex
+		justify-content: center
+		align-items: center
+
+	&__item-bg
+
+	&__item-content
+		display: flex
+		justify-content: center
+		align-items: center
+		width: 100%
+		height: 100%
+		position: absolute
+		top: 0
+		left: 0
+		right: 0
+		bottom: 0
+
+		&::before
+			content: ''
+			display: block
+			width: 100%
+			height: 100%
+			position: absolute
+			top: 0
+			left: 0
+			right: 0
+			background: #9c8d85
+			opacity: 0.4
+			z-index: 1
+			transition: opacity .2s ease-in-out
+
+	&__item:hover &__item-content
+		&::before
+			opacity: 0
+
+	&__item-bg-img
+		width: 100%
+		height: auto
+		object-fit: cover
+
+	&__item-icon
+		max-width: 35%
+		display: block
+		position: relative
+		z-index: 1
+
+	&__item-icon-img
+
+	&__item-text
+		position: absolute
+		bottom: 10px
+		left: 0
+		right: 0
+		color: #fff
+		text-align: center
+		font-size: 18px
+		line-height: 1.1em
+		z-index: 2
+
+		@media screen and (max-width: $media-xs)
+			font-size: 14px
+
+.content
+	margin-top: 70px
+	margin-bottom: 70px
+
+	&__wysiwyg
+
+		& p
+			margin-top: 15px
+			margin-bottom: 15px
+
+		& h2, & h3
+			font-size: 14px
+
+		& ul, & ol
+			margin-bottom: 15px
+			list-style-position: inside
+
+.category-controls
+	margin-bottom: 40px
+
+.category-filters
+	margin-bottom: 14px
+	display: flex
+	flex-wrap: wrap
+	justify-content: flex-start
+
+	@media screen and (max-width: $media-md)
+		justify-content: flex-start
+
+	&__link
+		margin-right: 17px
+		margin-bottom: 5px
+		padding: 0 10px 2px
+		display: flex
+		justify-content: center
+		align-items: center
+		height: 24px
+		color: #000
+		border: 1px solid #999999
+
+		&_current
+			border: 1px solid #245b5a
+			background-color: #245b5a
+			color: #fff
+
+		&:hover
+			border: 1px solid #245b5a
+			background-color: #245b5a
+			color: #fff
+
+.category-collections
+	margin-bottom: 14px
+
+	&__link
+		font-size: 14px
+		color: #245b5a
+
+		&_current
+			text-decoration: underline
+
+		&:hover
+			text-decoration: underline
+
+
+
+.footer
+	line-height: 16px
+	background: #e5e2de
+	color: #6b6b6b
+
+	&__row
+		border-bottom: 1px solid #757575
+
+	&__row-wrap
+		display: flex
+		flex-wrap: wrap
+		margin-top: 50px
+		margin-bottom: 50px
+
+		&_align_center
+			align-items: center
+
+	&__col
+		width: calc(100% / 5)
+
+		&:not(:nth-last-child(-n + 3))
+			@media screen and (max-width: $media-xl)
+				margin-bottom: 50px
+
+		&:not(:nth-last-child(-n + 2))
+			@media screen and (max-width: $media-lg)
+				margin-bottom: 50px
+
+		@media screen and (max-width: $media-xl)
+			width: calc(100% / 3)
+
+		@media screen and (max-width: $media-lg)
+			width: calc(100% / 2)
+
+		&_4
+			width: calc(100% / 5 * 4)
+
+			@media screen and (max-width: $media-xl)
+				width: calc(100% / 3 * 2)
+
+			@media screen and (max-width: $media-lg)
+				width: 100%
+
+
+
+		&_align_center
+			display: flex
+			flex-direction: column
+			align-items: center
+
+		&_full-width_lg
+			&:not(:last-child)
+				@media screen and (max-width: $media-lg)
+					margin-bottom: 50px
+
+			@media screen and (max-width: $media-lg)
+				width: 100%
+
+	&__col-block
+		&:not(:last-child)
+			margin-bottom: 25px
+
+	&__col-title
+		display: block
+		margin-bottom: 25px
+		color: #313130
+
+		&:hover
+			text-decoration: underline
+
+		&_short-bmargin
+			margin-bottom: 10px
+
+	&__list
+
+	&__item
+		display: block
+
+		&:not(:last-child)
+			margin-bottom: 10px
+
+	&__item-link
+		display: block
+		color: #6b6b6b
+
+		&:hover
+			text-decoration: underline
+
+		&_outline3d
+			margin-top: 10px
+			width: 50px
+			height: 50px
+
+			&:hover
+				& svg
+					fill: #000
+
+			& svg
+				width: 100%
+				height: auto
+				fill: #6b6b6b
+
+		&_logo-animated
+			margin-top: 100px
+			max-width: 180px
+			height: auto
+
+			& img
+				width: 100%
+
+	&__soc-list
+		display: flex
+
+	&__soc-item
+		margin-right: 10px
+
+	&__btn
+		display: inline-flex
+		justify-content: center
+		align-items: center
+		height: 30px
+		padding: 0 10px 2px
+		border: 1px solid #646361
+		color: #646361
+		transition: background .25s ease-in-out
+
+		&:hover
+			background: #245b5a
+			color: #fff
+			border: 1px solid #245b5a
+
+	&__text
+		line-height: 24px
+
+.social
+	display: flex
+	justify-content: center
+	align-items: center
+	width: 35px
+	height: 35px
+	border: 1px solid #3c3b3a
+	border-radius: 50%
+	font-size: 0
+	line-height: 0
+	transition: background .25s ease-in-out
+
+	&:hover
+		background: #245b5a
+		border: 1px solid #fff
+
+		& svg
+			fill: #fff
+
+	& svg
+		fill: #000
+
+.overlay
+	display: none
+	width: 100%
+	height: 100%
+	position: fixed
+	top: 0
+	left: 0
+	z-index: 100
+	background-color: rgba(0,0,0,.8)
+	cursor: pointer
+
+.modal
+	display: none
+	width: 90%
+	max-width: 500px
+	background-color: #fff
+	max-height: 90%
+	height: auto
+	position: fixed
+	overflow: auto
+	left: 50%
+	top: 50%
+	transform: translate(-50%, -50%)
+	opacity: 1
+	z-index: 101
+	padding: 40px 15px
+	box-shadow: 0px 0px 5px 0px rgb(4,5,5,.4)
+
+	& h2
+		text-align: center
+		font-size: 19px
+		font-weight: 400
+		margin-bottom: 28px
+
+	& p
+		text-align: center
+		font-size: 18px
+
+	& .block-title
+		font-size: 26px
+
+	.btns
+		display: flex
+		justify-content: center
+		flex-wrap: wrap
+
+		& a, & input[type="submit"]
+			color: #585857
+			text-align: center
+			box-sizing: border-box
+			background: #245b5a
+			color: #fff
+			display: inline-block
+			padding: 0px 1rem
+			height: 34px
+			line-height: 34px
+			text-transform: uppercase
+			font-size: 14px
+			white-space: nowrap
+			margin: 0.5rem
+			transition: all .2s
+			cursor: pointer
+			border: 0
+
+		& a:hover, & input[type="submit"]:hover
+			text-decoration: none
+			background: #c64a28
+			color: #fff
+
+	& svg.close_modal
+		position: absolute
+		top: 10px
+		right: 10px
+		height: 24px
+		width: 24px
+		cursor: pointer
+
+	& .close_modal
+		height: 100%
+		overflow: visible
+		position: relative
+		width: auto
+
+
+//////////
+//
+// формы
+//
+//////////
+.modal_order_info
+	width: 100%
+	display: flex
+	justify-content: center
+
+	& .order_info_left
+		width: 140px
+
+	& .order_img
+		& img
+			width: 100%
+
+	& .order_info_right
+		padding-top: 5px
+		padding-left: 20px
+
+	& .order_name
+		color: #313130
+		font-size: 15px
+		line-height: 22px
+		font-weight: 600
+		display: block
+
+	& .order_price
+		margin-bottom: 5px
+
+	& .order_count_label
+		font-size: 12px
+		color: #767676
+
+	& .tovar_kol_t, & .tovar_kol_min, & .tovar_kol_pls
+		font-size: 16px
+		height: 20px
+		line-height: 20px
+		outline: none
+
+
+.order_info_left
+	& *
+		box-sizing: border-box
+
+.tovar_kol
+	width: 60px
+	height: 38px
+	background: #fff
+	position: relative
+	display: inline-block
+
+.tovar_kol_min, .tovar_kol_pls
+	display: block
+	width: 20px
+	height: 38px
+	line-height: 32px
+	font-size: 20px
+	color: #767676
+	background: transparent
+	cursor: pointer
+	position: absolute
+	top: 0
+	text-align: center
+
+.tovar_kol_min
+	left: 0
+
+.tovar_kol_t
+	display: block
+	padding: 0
+	border: none
+	background-color: transparent
+	width: 38px
+	vertical-align: middle
+	height: 38px
+	text-align: center
+	font-size: 20px
+	position: absolute
+	left: 11px
+	top: 0
+	color: #767676
+
+.tovar_kol_pls
+	right: 0
+
+#form_one_click
+	& .inputs
+		display: flex
+		justify-content: space-between
+		flex-wrap: wrap
+		margin: 1rem 2rem 1rem
+
+#fFormBlock input[type="text"], #fFormBlock textarea, #myModal_form input[type="text"]:not([name="count"])
+	background: transparent
+	border: 1px solid #777
+	padding: 5px 10px 5px 10px
+	font-size: 16px
+	display: block
+	margin-bottom: 10px
+	width: 260px
+
+#form_one_click
+	& .inputs
+		& input
+			max-width: 170px
+
+form
+	& .validation_error
+		display: none
+		color: red
+		text-align: center
+
+#myModal_form_answer
+	display: none
+
+//////////
+//
+// END формы
+//
+//////////
+
+
+//////////
+//
+// Модалка-вопрос «выбор города»
+//
+//////////
+
+.question-city
+	position: absolute
+	top: 120%
+	left: 0
+	min-width: 250px
+	background-color: #fff
+	padding: 10px
+	box-shadow: 0px 0px 15px #000
+
+	@media screen and (max-width: $media-md)
+		max-width: 250px
+		position: fixed
+		top: calc($header--height-md + 20px)
+		left: 0
+		right: 0
+		margin: 0 auto
+
+	&__text
+		display: block
+		font-size: 18px
+		margin-bottom: 10px
+
+	&__buttons
+		width: 100%
+		display: flex
+		justify-content: space-between
+
+	&__btn
+		display: flex
+		align-items: center
+		height: 46px
+		min-width: 95px
+		padding: 5px 10px
+		color: #000
+		border: 1px solid #000
+		border-radius: 5px
+		cursor: pointer
+
+		&:nth-child(1)::after
+			content: ""
+			border-left: 3.5px solid transparent
+			border-right: 3.5px solid transparent
+			border-top: 3px solid #7d7c7b
+			margin-left: 1rem
+
+		&:nth-child(2)
+			justify-content: center
+
+//////////
+//
+// END Модалка-вопрос «выбор города»
+//
+//////////
+
+//////////
+//
+// Модалка список городов
+//
+//////////
+
+.city-select-list
+	display: none
+	cursor: default !important
+
+	&__block
+		margin-bottom: 20px
+
+	&__title-wrap
+		margin-bottom: 10px
+		display: flex
+		flex-direction: row
+		align-items: center
+
+		@media screen and (max-width: $media-md)
+			align-items: flex-start
+			flex-direction: column
+
+	&__title
+		font-size: 26px
+		text-transform: uppercase
+
+	&__search
+		min-width: 200px
+		margin-left: 20px
+
+		@media screen and (max-width: $media-md)
+			margin-top: 10px
+			margin-left: 0
+
+	&__body
+		display: flex
+		flex-direction: row
+		flex-wrap: wrap
+
+	&__col
+		width: 200px
+		margin-right: 20px
+		font-size: 12px
+
+	&__item
+		padding-top: 10px
+		padding-bottom: 10px
+		padding-left: 20px
+		position: relative
+
+		&_active
+
+	&__item-title
+		position: relative
+
+		&::before
+			content: ''
+			position: absolute
+			left: -20px
+			top: 0
+			bottom: 0
+			margin-top: auto
+			margin-bottom: auto
+			display: block
+			width: 9px
+			height: 9px
+			background-image: url('../img/city-plus.jpg')
+			background-position: center
+			background-size: contain
+			background-repeat: no-repeat
+
+	&__item_active &__item-title
+		&::before
+			background-image: url('../img/city-minus.jpg')
+
+	&__cities-list
+		display: none
+		padding-top: 10px
+
+	&__item_active &__cities-list
+		display: block
+
+	&__cities-item
+		padding-left: 15px
+		position: relative
+		margin-bottom: 5px
+
+		&::before
+			content: ''
+			display: block
+			width: 9px
+			height: 9px
+			position: absolute
+			top: 0
+			left: 0
+			bottom: 0
+			margin-top: auto
+			margin-bottom: auto
+			background-image: url('../img/city-npnm.jpg')
+			background-repeat: no-repeat
+			background-size: contain
+			background-position: center
+
+	&__cities-link
+		color: #000
+
+		&:hover
+			text-decoration: underline
+
+//////////
+//
+// END Модалка список городов
+//
+//////////
+
+//////////
+//
+// Блок рейтинга на странице товара
+//
+//////////
+
+.star_rating 
+	display: flex
+	flex-direction: row-reverse
+	float: left
+
+	& span 
+		display: inline-block
+		color: #ccc
+
+	& span
+		&::before 
+			content: "★"
+			font-size: 25px
+
+
+	& .checked,
+	& .checked ~ span,
+	&.selectable span:hover,
+	&.selectable span:hover ~ span 
+		color: orange
+
+	&.selectable
+		&:hover
+			& span 
+				color: #ccc
+
+				&:hover 
+					color: orange
+	&.js-has-vote
+		& span 
+			cursor: auto
+
+.page_rating 
+	display: flex
+	align-items: center
+	margin-bottom: 15px
+
+	& .rating_lable 
+		margin-right: 5px
+
+.form_rating 
+	display: flex
+	align-items: center
+	margin-bottom: 20px
+
+	@media screen and (max-width: $media-lg)
+		justify-content: center
+
+	& .rating_lable 
+		margin-right: 10px
+
+	& .star_rating
+		& span 
+			cursor: pointer
+
+//////////
+//
+// END Блок рейтинга на странице товара
+//
+//////////
+
+//////////
+//
+// Сортировка на страницах категорий
+//
+//////////
+
+.sorting 
+	display: flex
+	align-items: center
+	flex-wrap: wrap
+	margin-bottom: 30px
+
+	& span 
+		margin-right: 5px
+
+//////////
+//
+// END Сортировка на страницах категорий
+//
+//////////

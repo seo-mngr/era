@@ -1,0 +1,693 @@
+<div class="overlay"></div>
+<div class="modal" id="modal-in-cart">
+	<h2>Товар добавлен в корзину</h2>
+	<div class="btns">
+		<a href="#">Перейти в корзину</a>
+		<a href="#" class="close_modal">Продолжить покупки</a>
+		<svg class="close_modal" xmlns="http://www.w3.org/2000/svg" version="1" viewBox="0 0 24 24"><path d="M13 12l5-5-1-1-5 5-5-5-1 1 5 5-5 5 1 1 5-5 5 5 1-1z"></path></svg>
+	</div>
+</div>
+<div class="modal" id="modal-in-click">
+	<div id="myModal_form">
+
+		<!-- action is a product url placed through JS -->
+		<form method="post" action="[~[*id*]~]" name="form_one_click" id="form_one_click">
+			<input type="text" name="docurl" id="one_click_doc_url" value="" style="display:none"/>
+			<input type="text" name="docname" id="one_click_doc_name" value="" style="display:none" />
+			<input type="text" name="order_target_city" value="Санкт-Петербург" style="display:none" />
+			<input type="text" name="morntv" id="morntv" value="64052" style="display:none" />
+			<div class="modal_order_info">
+				<div class="order_info_left">
+					<div class="order_img">
+						<img src="" alt="" />
+					</div>
+				</div>
+				<div class="order_info_right">
+					<div class="order_name"></div>
+					<div class="order_price"></div>
+					<div class="order_count">
+						<div class="order_count_label">Количество</div>
+						<div class="tovar_kol">
+							<div class="tovar_kol_min">-</div>
+							<input type="text" name="count" class="tovar_kol_t shk-count" value="1">
+							<div class="tovar_kol_pls">+</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="inputs">
+				<input type="text" name="name" id="one_name" placeholder="Имя" />
+				<input type="text" name="phone" class="form_tel" placeholder="Телефон *" />
+				<input type="hidden" name="prod_id" value="1122" id="prod_id" style="display:none;">
+			</div>
+			<div class="messages">
+				<div class="validation_error"></div>
+			</div>
+			<div class="btns">
+				<input type="submit" class="btn" name="submit" id="one_click_submit" value="Отправить">
+			</div>
+		</form>
+
+		<div class="btns">
+			<svg class="close_modal" xmlns="http://www.w3.org/2000/svg" version="1" viewBox="0 0 24 24"><path d="M13 12l5-5-1-1-5 5-5-5-1 1 5 5-5 5 1 1 5-5 5 5 1-1z"></path></svg>
+		</div>
+	</div>
+	<div id="myModal_form_answer">
+		<div id="myModal_form_answer_text"></div>
+		<div class="btns">
+			<a href="" class="close_modal">Закрыть</a>
+			<svg class="close_modal" xmlns="http://www.w3.org/2000/svg" version="1" viewBox="0 0 24 24"><path d="M13 12l5-5-1-1-5 5-5-5-1 1 5 5-5 5 1 1 5-5 5 5 1-1z"></path></svg>
+		</div>
+	</div>
+</div>
+
+<div class="modal" id="modal-in-rassr">
+	<div class="modal_order_info">
+		<div class="order_info_left">
+			<div class="order_img">
+				<img src="" alt="" />
+			</div>
+		</div>
+		<div class="order_info_right">
+			<div class="order_name"></div>
+			<div class="order_price"></div>
+		</div>
+	</div>
+	<div class="btns">
+		<a href="#?installment=1">Перейти к оформлению</a>
+		<a href="#" class="close_modal">Продолжить покупки</a>
+		<svg class="close_modal" xmlns="http://www.w3.org/2000/svg" version="1" viewBox="0 0 24 24"><path d="M13 12l5-5-1-1-5 5-5-5-1 1 5 5-5 5 1 1 5-5 5 5 1-1z"></path></svg>
+	</div>
+</div>
+
+<div id="city_select_list" class="city-select-list">
+	<div class="city-select-list__block">
+		<div class="city-select-list__title-wrap">
+			<div class="city-select-list__title">Выбор города</div>
+			<div class="city-select-list__search">
+				<select class="selectize">
+				</select>
+			</div>
+		</div>
+		<div class="city-select-list__body">
+			<div class="city-select-list__col">
+				<div class="city-select-list__item">
+					<div class="city-select-list__item-title">Алтайский край</div>
+					<ul class="city-select-list__cities-list">
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Барнаул</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Санкт-Петербург</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Барнаул</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Санкт-Петербург</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Барнаул</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Санкт-Петербург</a>
+						</li>
+					</ul>
+				</div>
+				<div class="city-select-list__item city-select-list__item_active">
+					<div class="city-select-list__item-title">Алтайский край</div>
+					<ul class="city-select-list__cities-list">
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Барнаул</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Санкт-Петербург</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Барнаул</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Санкт-Петербург</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Барнаул</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Санкт-Петербург</a>
+						</li>
+					</ul>
+				</div>
+				<div class="city-select-list__item">
+					<div class="city-select-list__item-title">Алтайский край</div>
+					<ul class="city-select-list__cities-list">
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Барнаул</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Санкт-Петербург</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Барнаул</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Санкт-Петербург</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Барнаул</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Санкт-Петербург</a>
+						</li>
+					</ul>
+				</div>
+				<div class="city-select-list__item">
+					<div class="city-select-list__item-title">Алтайский край</div>
+					<ul class="city-select-list__cities-list">
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Барнаул</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Санкт-Петербург</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Барнаул</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Санкт-Петербург</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Барнаул</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Санкт-Петербург</a>
+						</li>
+					</ul>
+				</div>
+				<div class="city-select-list__item">
+					<div class="city-select-list__item-title">Алтайский край</div>
+					<ul class="city-select-list__cities-list">
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Барнаул</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Санкт-Петербург</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Барнаул</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Санкт-Петербург</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Барнаул</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Санкт-Петербург</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="city-select-list__col">
+				<div class="city-select-list__item">
+					<div class="city-select-list__item-title">Алтайский край</div>
+					<ul class="city-select-list__cities-list">
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Барнаул</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Санкт-Петербург</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Барнаул</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Санкт-Петербург</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Барнаул</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Санкт-Петербург</a>
+						</li>
+					</ul>
+				</div>
+				<div class="city-select-list__item">
+					<div class="city-select-list__item-title">Алтайский край</div>
+					<ul class="city-select-list__cities-list">
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Барнаул</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Санкт-Петербург</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Барнаул</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Санкт-Петербург</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Барнаул</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Санкт-Петербург</a>
+						</li>
+					</ul>
+				</div>
+				<div class="city-select-list__item">
+					<div class="city-select-list__item-title">Алтайский край</div>
+					<ul class="city-select-list__cities-list">
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Барнаул</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Санкт-Петербург</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Барнаул</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Санкт-Петербург</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Барнаул</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Санкт-Петербург</a>
+						</li>
+					</ul>
+				</div>
+				<div class="city-select-list__item">
+					<div class="city-select-list__item-title">Алтайский край</div>
+					<ul class="city-select-list__cities-list">
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Барнаул</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Санкт-Петербург</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Барнаул</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Санкт-Петербург</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Барнаул</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Санкт-Петербург</a>
+						</li>
+					</ul>
+				</div>
+				<div class="city-select-list__item">
+					<div class="city-select-list__item-title">Алтайский край</div>
+					<ul class="city-select-list__cities-list">
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Барнаул</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Санкт-Петербург</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Барнаул</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Санкт-Петербург</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Барнаул</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Санкт-Петербург</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="city-select-list__col">
+				<div class="city-select-list__item">
+					<div class="city-select-list__item-title">Алтайский край</div>
+					<ul class="city-select-list__cities-list">
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Барнаул</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Санкт-Петербург</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Барнаул</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Санкт-Петербург</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Барнаул</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Санкт-Петербург</a>
+						</li>
+					</ul>
+				</div>
+				<div class="city-select-list__item">
+					<div class="city-select-list__item-title">Алтайский край</div>
+					<ul class="city-select-list__cities-list">
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Барнаул</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Санкт-Петербург</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Барнаул</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Санкт-Петербург</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Барнаул</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Санкт-Петербург</a>
+						</li>
+					</ul>
+				</div>
+				<div class="city-select-list__item">
+					<div class="city-select-list__item-title">Алтайский край</div>
+					<ul class="city-select-list__cities-list">
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Барнаул</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Санкт-Петербург</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Барнаул</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Санкт-Петербург</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Барнаул</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Санкт-Петербург</a>
+						</li>
+					</ul>
+				</div>
+				<div class="city-select-list__item">
+					<div class="city-select-list__item-title">Алтайский край</div>
+					<ul class="city-select-list__cities-list">
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Барнаул</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Санкт-Петербург</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Барнаул</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Санкт-Петербург</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Барнаул</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Санкт-Петербург</a>
+						</li>
+					</ul>
+				</div>
+				<div class="city-select-list__item">
+					<div class="city-select-list__item-title">Алтайский край</div>
+					<ul class="city-select-list__cities-list">
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Барнаул</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Санкт-Петербург</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Барнаул</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Санкт-Петербург</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Барнаул</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Санкт-Петербург</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="city-select-list__col">
+				<div class="city-select-list__item">
+					<div class="city-select-list__item-title">Алтайский край</div>
+					<ul class="city-select-list__cities-list">
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Барнаул</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Санкт-Петербург</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Барнаул</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Санкт-Петербург</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Барнаул</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Санкт-Петербург</a>
+						</li>
+					</ul>
+				</div>
+				<div class="city-select-list__item">
+					<div class="city-select-list__item-title">Алтайский край</div>
+					<ul class="city-select-list__cities-list">
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Барнаул</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Санкт-Петербург</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Барнаул</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Санкт-Петербург</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Барнаул</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Санкт-Петербург</a>
+						</li>
+					</ul>
+				</div>
+				<div class="city-select-list__item">
+					<div class="city-select-list__item-title">Алтайский край</div>
+					<ul class="city-select-list__cities-list">
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Барнаул</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Санкт-Петербург</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Барнаул</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Санкт-Петербург</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Барнаул</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Санкт-Петербург</a>
+						</li>
+					</ul>
+				</div>
+				<div class="city-select-list__item">
+					<div class="city-select-list__item-title">Алтайский край</div>
+					<ul class="city-select-list__cities-list">
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Барнаул</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Санкт-Петербург</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Барнаул</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Санкт-Петербург</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Барнаул</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Санкт-Петербург</a>
+						</li>
+					</ul>
+				</div>
+				<div class="city-select-list__item">
+					<div class="city-select-list__item-title">Алтайский край</div>
+					<ul class="city-select-list__cities-list">
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Барнаул</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Санкт-Петербург</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Барнаул</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Санкт-Петербург</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Барнаул</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Санкт-Петербург</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="city-select-list__col">
+				<div class="city-select-list__item">
+					<div class="city-select-list__item-title">Алтайский край</div>
+					<ul class="city-select-list__cities-list">
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Барнаул</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Санкт-Петербург</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Барнаул</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Санкт-Петербург</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Барнаул</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Санкт-Петербург</a>
+						</li>
+					</ul>
+				</div>
+				<div class="city-select-list__item">
+					<div class="city-select-list__item-title">Алтайский край</div>
+					<ul class="city-select-list__cities-list">
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Барнаул</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Санкт-Петербург</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Барнаул</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Санкт-Петербург</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Барнаул</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Санкт-Петербург</a>
+						</li>
+					</ul>
+				</div>
+				<div class="city-select-list__item">
+					<div class="city-select-list__item-title">Алтайский край</div>
+					<ul class="city-select-list__cities-list">
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Барнаул</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Санкт-Петербург</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Барнаул</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Санкт-Петербург</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Барнаул</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Санкт-Петербург</a>
+						</li>
+					</ul>
+				</div>
+				<div class="city-select-list__item">
+					<div class="city-select-list__item-title">Алтайский край</div>
+					<ul class="city-select-list__cities-list">
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Барнаул</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Санкт-Петербург</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Барнаул</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Санкт-Петербург</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Барнаул</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Санкт-Петербург</a>
+						</li>
+					</ul>
+				</div>
+				<div class="city-select-list__item">
+					<div class="city-select-list__item-title">Алтайский край</div>
+					<ul class="city-select-list__cities-list">
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Барнаул</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Санкт-Петербург</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Барнаул</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Санкт-Петербург</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Барнаул</a>
+						</li>
+						<li class="city-select-list__cities-item">
+							<a href="#" class="city-select-list__cities-link">Санкт-Петербург</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="city-select-list__block">
+		<div class="city-select-list__title-wrap">
+			<div class="city-select-list__title">СНГ</div>
+		</div>
+		<div class="city-select-list__body">
+			[[city_select_list? &ids=`1326`]]
+			<div class="clear"></div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">	
+	var get_city_alias = 'moskva';
+</script>

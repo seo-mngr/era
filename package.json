@@ -25,6 +25,7 @@
     "postcss": "^8.1.10",
     "postcss-sort-media-queries": "^2.1.11",
     "sass": "^1.45.0",
-    "smart-grid": "^2.1.2"
+    "smart-grid": "^2.1.2",
+    "swiper": "^8.0.7"
   }
 }

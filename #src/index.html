@@ -3,19 +3,214 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/style.min.css">
-  <title>Era-mebel.com</title>
+  <link rel="stylesheet" href="/css/style.min.css">
+  <title>Era-mebel.com — Главная</title>
 </head>
 <body>
 	@@include('view_parts/_sidebar.html')
-  <div class="wrapper">
+  <div class="wrapper wrapper_home">
   	@@include('view_parts/_header.html')
   	<main class="main">
-  		
+  		<section class="slider-frontpage">
+  			<div class="slider-frontpage__slider-preloader">
+  				<picture class="slider-frontpage__item-picture">
+						<source media="(max-width: 768px)" srcset="img/slide-770.jpg" width="770" height="689">
+						<img class="slider-frontpage__item-img" src="img/slide-1614.jpg" width="1614" height="543" />
+					</picture>
+  			</div>
+  			<div class="slider-frontpage__slider swiper">
+  				<div class="slider-frontpage__slider-wrapper swiper-wrapper">
+  					<a href="#" class="slider-frontpage__item swiper-slide">
+	  					<picture class="slider-frontpage__item-picture">
+								<source media="(max-width: 768px)" srcset="img/slide-770.jpg" width="770" height="689">
+								<img class="slider-frontpage__item-img" src="img/slide-1614.jpg" width="1614" height="543" />
+							</picture>
+	  				</a>
+	  				<a href="#" class="slider-frontpage__item swiper-slide">
+	  					<picture class="slider-frontpage__item-picture">
+								<source media="(max-width: 768px)" srcset="img/slide-770.jpg" width="770" height="689">
+								<img class="slider-frontpage__item-img" src="img/slide-1614.jpg" width="1614" height="543" />
+							</picture>
+	  				</a>
+	  				<a href="#" class="slider-frontpage__item swiper-slide">
+	  					<picture class="slider-frontpage__item-picture">
+								<source media="(max-width: 768px)" srcset="img/slide-770.jpg" width="770" height="689">
+								<img class="slider-frontpage__item-img" src="img/slide-1614.jpg" width="1614" height="543" />
+							</picture>
+	  				</a>
+  				</div>
+  				<div class="swiper-pagination"></div>
+  				<div class="swiper-button-prev"></div>
+  				<div class="swiper-button-next"></div>
+  			</div>
+  		</section>
+
+  		<section class="promo">
+  			<ul class="promo__list">
+  				<li class="promo__item">
+  					<a href="#" class="promo__item-link">
+  						<img src="/img/promo-1.jpg" data-progressive="/img/promo-1.jpg" alt="" class="promo__img progressive__img progressive--not-loaded">
+  					</a>
+  				</li>
+  				<li class="promo__item">
+  					<a href="#" class="promo__item-link">
+  						<img src="/img/promo-2.jpg" data-progressive="/img/promo-2.jpg" alt="" class="promo__img progressive__img progressive--not-loaded">
+  					</a>
+  				</li>
+  				<li class="promo__item">
+  					<a href="#" class="promo__item-link">
+  						<img src="/img/promo-3.jpg" data-progressive="/img/promo-3.jpg" alt="" class="promo__img progressive__img progressive--not-loaded">
+  					</a>
+  				</li>
+  			</ul>
+  		</section>
+
+  		<section class="slider-products slider-products_sales">
+  			<div class="container">
+  				<div class="headline">Новинки и акции</div>
+	  			<div class="slider-products__slider-wrap">
+	  				<div class="slider-products__slider swiper">
+	  					<div class="swiper-wrapper">
+	  						<div class="slider-products__slide swiper-slide swiper-no-swiping">
+			  					@@include('view_parts/_product-mini.html')
+			  				</div><div class="slider-products__slide swiper-slide swiper-no-swiping">
+			  					@@include('view_parts/_product-mini.html')
+			  				</div><div class="slider-products__slide swiper-slide swiper-no-swiping">
+			  					@@include('view_parts/_product-mini.html')
+			  				</div><div class="slider-products__slide swiper-slide swiper-no-swiping">
+			  					@@include('view_parts/_product-mini.html')
+			  				</div><div class="slider-products__slide swiper-slide swiper-no-swiping">
+			  					@@include('view_parts/_product-mini.html')
+			  				</div><div class="slider-products__slide swiper-slide">
+			  					@@include('view_parts/_product-mini.html')
+			  				</div><div class="slider-products__slide swiper-slide">
+			  					@@include('view_parts/_product-mini.html')
+			  				</div><div class="slider-products__slide swiper-slide">
+			  					@@include('view_parts/_product-mini.html')
+			  				</div><div class="slider-products__slide swiper-slide">
+			  					@@include('view_parts/_product-mini.html')
+			  				</div><div class="slider-products__slide swiper-slide">
+			  					@@include('view_parts/_product-mini.html')
+			  				</div><div class="slider-products__slide swiper-slide">
+			  					@@include('view_parts/_product-mini.html')
+			  				</div>
+	  					</div>
+	  					<div class="swiper-pagination"></div>
+	  					<div class="slider-products__controls">
+			  				<div class="slider-products__btn-prev"></div>
+			  				<div class="slider-products__btn-next"></div>
+			  			</div>
+		  			</div>
+	  			</div>
+  			</div>
+  		</section>
+
+  		<section class="parallax-block">
+  			<a href="#" class="parallax-block__wrap">
+  				<img class="parallax-block__img" srcset="https://era-mebel.com/assets/cache/images/slider/banner-zima-1920x-dba.jpg 1920w, https://era-mebel.com/assets/cache/images/slider/banner-zima-768x-6c2.jpg 768w" sizes="(max-width: 768px) 768w, 1920w" src="https://era-mebel.com/assets/cache/images/slider/banner-zima-1920x-e6b.jpg" />
+  			</a>
+  		</section>
+
+  		<section class="slider-products slider-products_hits">
+  			<div class="container">
+  				<div class="headline">Хиты продаж</div>
+	  			<div class="slider-products__slider-wrap">
+	  				
+	  				<div class="slider-products__slider swiper">
+	  					<div class="swiper-wrapper">
+	  						<div class="slider-products__slide">
+			  					@@include('view_parts/_product-mini.html')
+			  				</div><div class="slider-products__slide swiper-slide">
+			  					@@include('view_parts/_product-mini.html')
+			  				</div><div class="slider-products__slide swiper-slide">
+			  					@@include('view_parts/_product-mini.html')
+			  				</div><div class="slider-products__slide swiper-slide">
+			  					@@include('view_parts/_product-mini.html')
+			  				</div><div class="slider-products__slide swiper-slide">
+			  					@@include('view_parts/_product-mini.html')
+			  				</div><div class="slider-products__slide swiper-slide">
+			  					@@include('view_parts/_product-mini.html')
+			  				</div><div class="slider-products__slide swiper-slide">
+			  					@@include('view_parts/_product-mini.html')
+			  				</div><div class="slider-products__slide swiper-slide">
+			  					@@include('view_parts/_product-mini.html')
+			  				</div><div class="slider-products__slide swiper-slide">
+			  					@@include('view_parts/_product-mini.html')
+			  				</div><div class="slider-products__slide swiper-slide">
+			  					@@include('view_parts/_product-mini.html')
+			  				</div><div class="slider-products__slide swiper-slide">
+			  					@@include('view_parts/_product-mini.html')
+			  				</div>
+	  					</div>
+			  				
+			  			<div class="swiper-pagination"></div>
+	  					<div class="slider-products__controls">
+			  				<div class="slider-products__btn-prev"></div>
+			  				<div class="slider-products__btn-next"></div>
+			  			</div>
+		  			</div>
+		  			<div class="slider-products__controls">
+		  				<div class="slider-products__btn-prev"></div>
+		  				<div class="slider-products__btn-next"></div>
+		  			</div>
+	  			</div>
+  			</div>
+  		</section>
+
+  		<section class="slider-products slider-products_youtube">
+  			<div class="container">
+  				<div class="headline">Ищите нас в Ютуб <a target="_blank" href="https://www.youtube.com/channel/UCe9QWhhTtFB6oz0f-aPiFSQ">@МЕБЕЛЬНАЯ КОМПАНИЯ ЭРА</a></div>
+	  			<div class="slider-products__slider-wrap">
+	  				<div class="slider-products__slider swiper">
+	  					<div class="swiper-wrapper">
+	  						<div class="slider-products__slide swiper-slide swiper-no-swiping">
+			  					@@include('view_parts/_product-mini.html')
+			  				</div><div class="slider-products__slide swiper-slide swiper-no-swiping">
+			  					@@include('view_parts/_product-mini.html')
+			  				</div><div class="slider-products__slide swiper-slide swiper-no-swiping">
+			  					@@include('view_parts/_product-mini.html')
+			  				</div><div class="slider-products__slide swiper-slide swiper-no-swiping">
+			  					@@include('view_parts/_product-mini.html')
+			  				</div><div class="slider-products__slide swiper-slide swiper-no-swiping">
+			  					@@include('view_parts/_product-mini.html')
+			  				</div><div class="slider-products__slide swiper-slide">
+			  					@@include('view_parts/_product-mini.html')
+			  				</div><div class="slider-products__slide swiper-slide">
+			  					@@include('view_parts/_product-mini.html')
+			  				</div><div class="slider-products__slide swiper-slide">
+			  					@@include('view_parts/_product-mini.html')
+			  				</div><div class="slider-products__slide swiper-slide">
+			  					@@include('view_parts/_product-mini.html')
+			  				</div><div class="slider-products__slide swiper-slide">
+			  					@@include('view_parts/_product-mini.html')
+			  				</div><div class="slider-products__slide swiper-slide">
+			  					@@include('view_parts/_product-mini.html')
+			  				</div>
+	  					</div>
+	  					<div class="swiper-pagination"></div>
+	  					<div class="slider-products__controls">
+			  				<div class="slider-products__btn-prev"></div>
+			  				<div class="slider-products__btn-next"></div>
+			  			</div>
+		  			</div>
+	  			</div>
+  			</div>
+  		</section>
+
+  		<section class="content">
+  			<div class="container">
+  				<h1 class="headline content__headline">КАЧЕСТВЕННАЯ КЛАССИЧЕСКАЯ МЕБЕЛЬ В СТИЛЯХ БАРОККО И НЕОКЛАССИКА ОТ ПРОИЗВОДИТЕЛЯ «ЭРА»</h1>
+  				<div class="content__wysiwyg">
+  					@@include('view_parts/_content-home.html')
+  				</div>
+  			</div>
+  		</section>
+
 		</main>
   	@@include('view_parts/_footer.html')
   </div>
   
+  @@include('view_parts/_modals.html')
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <script src="js/scripts.js"></script>
 </body>

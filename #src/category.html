@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.min.css">
+  <title>Era-mebel.com — Категория</title>
+</head>
+<body>
+  @@include('view_parts/_sidebar.html')
+  <div class="wrapper">
+  	@@include('view_parts/_header.html')
+  	<main class="main">
+  		<div class="breadcrumbs">
+  			<div class="container">
+  				<div class="breadcrumbs__wrap">
+  					<ul class="breadcrumbs__list">
+	  					<li class="breadcrumbs__item">
+	  						<a href="/" class="breadcrumbs__link">Главная</a>
+	  					</li>
+              <li class="breadcrumbs__item">
+                <a href="/" class="breadcrumbs__link">Продукция</a>
+              </li>
+	  					<li class="breadcrumbs__item">
+                <span class="breadcrumbs__current">Спальни</span>
+              </li>
+	  				</ul>
+  				</div>
+  			</div>
+      </div>
+
+      <div class="main__content container">
+        <h1 class="headline">Спальни в г. Москва</h1>
+        
+        <div class="category-controls">
+          <div class="category-filters">
+            <a href="#" class="category-filters__link category-filters__link_current">В светлых тонах</a>
+            <a href="#" class="category-filters__link">В тёмных тонах</a>
+            <a href="#" class="category-filters__link">Новинки</a>
+            <a href="#" class="category-filters__link">Белые</a>
+          </div>
+          <div class="category-collections">
+            <a href="#" class="category-collections__link category-collections__link_current">Анна Мария</a> | 
+            <a href="#" class="category-collections__link">Афина</a> | 
+            <a href="#" class="category-collections__link">Габриэлла</a> | 
+            <a href="#" class="category-collections__link">Джоконда</a> | 
+            <a href="#" class="category-collections__link">Илона</a> | 
+            <a href="#" class="category-collections__link">Лорена</a> | 
+            <a href="#" class="category-collections__link">Марокко</a>
+          </div>
+          <div class="sorting">
+            <span>Сортировать:</span>
+            <select name="sort" class="js-sorting">
+              <option value="all">по умолчанию</option>
+              <option value="price:asc">по цене, по возрастанию</option>
+              <option value="price:desc">по цене, по убыванию</option>
+              <option value="name:asc">по алфавиту от А до Я</option>
+              <option value="name:desc">по алфавиту от Я до А</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="category js-sort-container">
+
+          <div class="category__item">
+            @@include('view_parts/_product-mini.html')
+          </div><div class="category__item">
+            @@include('view_parts/_product-mini.html')
+          </div><div class="category__item">
+            @@include('view_parts/_product-mini.html')
+          </div><div class="category__item">
+            @@include('view_parts/_product-mini.html')
+          </div><div class="category__item">
+            @@include('view_parts/_product-mini.html')
+          </div><div class="category__item">
+            @@include('view_parts/_product-mini.html')
+          </div><div class="category__item">
+            @@include('view_parts/_product-mini.html')
+          </div><div class="category__item">
+            @@include('view_parts/_product-mini.html')
+          </div><div class="category__item">
+            @@include('view_parts/_product-mini.html')
+          </div><div class="category__item">
+            @@include('view_parts/_product-mini.html')
+          </div><div class="category__item">
+            @@include('view_parts/_product-mini.html')
+          </div><div class="category__item">
+            @@include('view_parts/_product-mini.html')
+          </div>
+          
+        </div>
+      </div>
+      <div class="content">
+        <div class="container">
+          <div class="content__wysiwyg">
+            <h2>Классические спальни</h2>
+            <p>Классический стиль никогда не устаревает вне зависимости от тенденций моды. Если вы хотите купить спальни от Российского производителя, предлагаем ознакомиться с нашим каталогом. Такая мебель отлично впишется в любой интерьер, при этом сохраняя уникальные черты.</p>
+            <p>Обычно используют однотонные расцветки, избегая контрастов. Корпусная мебель для спальни изготавливается из экологичного ЛДСП и МДФ. Ее дополняют декором и аксессуарами на несколько тонов светлее или темнее. Для придания особой атмосферы роскоши мебель украшают в некоторых случаях резьбой и позолоченной патиной.</p>
+            <p>Комната, где вы проводите треть жизни, должна быть максимально комфортной и функциональной. У нас Вы можете купить классическую спальню, сделав заказ онлайн или по телефону. При возникновении каких-либо вопросов наш консультант всегда рад Вам помочь.</p>
+            <ul class="seo-list-ul">
+              <li>✅ Мебель в г. Москва от 1533 руб. - каталог, цены</li>
+              <li>✅ 556 моделей классической мебели со скидкой до 35%</li>
+              <li>✅ Оперативная доставка по г. Москва и всей России</li>
+              <li>✅ Сборка, подъём на этаж, занос в квартиру</li>
+              <li>✅ Мебель в классическом стиле от российского производителя по лекалам итальянских мастеров</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+		</main>
+  	@@include('view_parts/_footer.html')
+  </div>
+  
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="js/scripts.js"></script>
+</body>
+</html> 
