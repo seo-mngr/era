@@ -4429,7 +4429,6 @@ body.compensate-for-scrollbar {
   max-width: 180px;
   height: auto;
 }
-
 .footer__item-link_logo-animated img {
   width: 100%;
 }
@@ -5379,6 +5378,20 @@ form .validation_error {
 
   .catalog__item:nth-last-child(-n+2) {
     margin-bottom: 0;
+  }
+  .footer__col_logo {
+    position: relative;
+    width: 100%;
+  }
+
+  .footer__col_logo .footer__col-block {
+    width: 100%;
+    padding-bottom: 180px;
+  }
+  .footer__item-link_logo-animated {
+    position: absolute;
+    right: 15px;
+    top: 60px;
   }
 }
 
