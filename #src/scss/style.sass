@@ -139,8 +139,6 @@
 		&:hover::before
 			opacity: 1
 
-
-
 	&__img
 		flex: none
 		max-height: 100%
@@ -455,6 +453,14 @@
 		& .logo__img-sm
 			@media screen and (max-width: $media-md)
 				display: block
+
+		& .logo__img-wrap
+			&::before
+				@media screen and (max-width: $media-md)
+					display: block
+					opacity: .6
+					background-size: contain
+					background-position: center calc(50% - 5px)
 
 	&__mini-cart
 		position: absolute

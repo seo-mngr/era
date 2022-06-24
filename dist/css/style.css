@@ -5271,6 +5271,12 @@ form .validation_error {
   .header__logo .logo__img-sm {
     display: block;
   }
+  .header__logo .logo__img-wrap::before {
+    display: block;
+    opacity: 0.6;
+    background-size: contain;
+    background-position: center calc(50% - 5px);
+  }
   .header__mini-cart {
     height: 50px;
   }
