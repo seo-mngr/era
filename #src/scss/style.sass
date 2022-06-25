@@ -205,13 +205,20 @@
 	height: calc((var(--vh, 1vh) * 100) - ($sidebar--ptop + $logo--height + $logo--mbottom + $searchbar--height))
 	$block: &
 
+	@media screen and (max-width: $media-md)
+		background: #f5f3f1
+
 	&__list
+		background: #fff
 
 		&_color
 			&_orange
+				padding-bottom: 30px
 
 		&_mobile
 			display: none
+			padding-top: 30px
+			background: transparent
 
 			@media screen and (max-width: $media-md)
 				display: block

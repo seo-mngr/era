@@ -2813,9 +2813,18 @@ body.compensate-for-scrollbar {
 .side-menu {
   height: calc(var(--vh, 1vh) * 100 - 154px);
 }
+.side-menu__list {
+  background: #fff;
+}
+
+.side-menu__list_color_orange {
+  padding-bottom: 30px;
+}
 
 .side-menu__list_mobile {
   display: none;
+  padding-top: 30px;
+  background: transparent;
 }
 .side-menu__item {
   position: relative;
@@ -5213,6 +5222,9 @@ form .validation_error {
   }
   .logo__img-sm {
     display: none;
+  }
+  .side-menu {
+    background: #f5f3f1;
   }
   .side-menu__list_mobile {
     display: block;
