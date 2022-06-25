@@ -4438,8 +4438,14 @@ body.compensate-for-scrollbar {
   max-width: 180px;
   height: auto;
 }
-.footer__item-link_logo-animated img {
+.footer__item-link_logo-animated svg {
   width: 100%;
+  max-width: 200px;
+  fill: #6b6b6b;
+}
+
+.footer__item-link_logo-animated svg:hover {
+  fill: unset;
 }
 
 .footer__soc-list {
@@ -5410,6 +5416,7 @@ form .validation_error {
     position: absolute;
     right: 15px;
     top: 60px;
+    margin-top: 0;
   }
 }
 
