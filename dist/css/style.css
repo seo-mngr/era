@@ -5313,7 +5313,7 @@ form .validation_error {
     width: 100%;
   }
   .header {
-    height: 80px;
+    height: 100px;
     position: relative;
     margin-bottom: 15px;
   }
@@ -5323,22 +5323,27 @@ form .validation_error {
   }
   .header__contacts {
     margin-right: 0;
+    flex-wrap: wrap;
     flex-direction: row-reverse;
     justify-content: space-between;
     align-items: center;
     height: auto;
   }
   .header__city-selector {
+    flex-basis: 50%;
+    display: flex;
+    justify-content: flex-end;
     margin-bottom: 0;
   }
   .header__phone {
-    margin-right: 25px;
+    flex-basis: 50%;
   }
   .header__phone-link {
     font-size: 16px;
   }
   .header__working-hours {
-    display: none;
+    flex-basis: 100%;
+    font-size: 12px;
   }
   .header__nav {
     height: auto;
@@ -5424,7 +5429,7 @@ form .validation_error {
   .question-city {
     max-width: 250px;
     position: fixed;
-    top: 100px;
+    top: 120px;
     left: 0;
     right: 0;
     margin: 0 auto;

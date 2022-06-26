@@ -397,6 +397,7 @@
 		@media screen and (max-width: $media-md)
 			//margin-bottom: 10px
 			margin-right: 0
+			flex-wrap: wrap
 			flex-direction: row-reverse
 			justify-content: space-between
 			align-items: center
@@ -406,11 +407,15 @@
 		margin-bottom: 5px
 
 		@media screen and (max-width: $media-md)
+			flex-basis: 50%
+			display: flex
+			justify-content: flex-end
 			margin-bottom: 0
 
 	&__phone
 		@media screen and (max-width: $media-md)
-			margin-right: 25px
+			flex-basis: 50%
+			//margin-right: 25px
 
 	&__phone-link
 		font-size: 20px
@@ -427,7 +432,9 @@
 		font-size: 14px
 
 		@media screen and (max-width: $media-md)
-			display: none
+			//display: none
+			flex-basis: 100%
+			font-size: 12px
 
 	&__nav
 		height: 100%
