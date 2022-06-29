@@ -11149,6 +11149,28 @@ $(document).ready(function() {
     /*
     ==========
     *
+    *   Мини-галерея фото на мини-карточке товара в категориях, фильтрах, коллекциях
+    *
+    ==========
+    */
+    $(function() {
+        if ( $('.product-mini__multiphoto-item').length ) {
+            $('.product-mini__multiphoto-item').on('mouseenter', function() {
+                let current_image = $(this).attr('data-image');
+                $('.product-mini__multiphoto-item').removeClass('active');
+                $(this).closest('.product-mini__photo').find('.product-mini__img').attr('src', current_image);
+                $(this).addClass('active');
+            });
+            $('.product-mini__multiphoto').on('mouseleave', function() {
+                let first_image = $( $('.product-mini__multiphoto-item', this)[0] ).attr('data-image');
+                $(this).closest('.product-mini__photo').find('.product-mini__img').attr('src', first_image);
+            });
+        }
+    });
+
+    /*
+    ==========
+    *
     *   Functions
     *
     ==========
