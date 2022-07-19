@@ -4971,6 +4971,10 @@ form .validation_error {
   min-width: 200px;
   margin-left: 20px;
 }
+.city-select-list__search .selectize-input input {
+  width: 100% !important;
+}
+
 .city-select-list__body {
   display: -webkit-box;
   display: -ms-flexbox;
